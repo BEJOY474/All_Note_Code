@@ -1,0 +1,34 @@
+Hosting
+--------
+x = 30
+console.log(x)
+var x;
+hosting holo ekti variable ke declear korar age e take initial kora jay but let and const use korle error asbe
+js e default variable hesebe var=X ke suru te neye kaj korbe
+------------------------------------------------------------------------------------------------------------------
+
+Strict Mood
+------------
+"use strict"
+ey key word er maddhome js file e sequre korbe onk
+"use strict"
+**x = 30
+console.log(x)
+var x;** //strict use korle ey code ta error dekhabe..but normal ES6 er run korto
+
+------------------------------------------------------------------------------------------------------------
+container h-auto p-5 px-4 mx-auto max-w-screen-2xl xl:px-24
+
+-----------------------------------------------------------------------
+form e value pass korar sathe sathe jeno reload na hoy tar jonno -->   e.preventDefault()
+-------------------------------------------------------------------------------------------
+
+npm yup --> npm i yup
+import * as yup from 'yup'
+
+formik for validation
+
+---------------------------------------------------------------------------------
+npm i react-toastify      
+------------------------------------------------------------------
+firebase Auth-->Doc-->Build-->Web-->copy code-->past AuthProvider.jsx                                                                                               

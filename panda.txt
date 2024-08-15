@@ -1,0 +1,189 @@
+
+1) ASR
+2) IPA
+3) ML
+4) MLP
+
+-------------------------------------------------------------------------------------------
+pandas has to type of data set. one is series and anouther is dataframe.
+
+#import pandas
+import pandas as pd
+-------------------------
+#empty dataset
+pf  = pd.DataFrame()
+pf.info()
+
+#data list
+uni = ['UIU', 'AIUB', 'NSU','BUP']
+
+#Series make from list
+s = pd.Series(uni)
+
+list theke frame e convert
+df = pd.DataFrame(uni)
+df
+
+kono kicher type janar jonno
+type(df)-------> kon typre er seta output e dekhabe
+
+kono dataFrame er shape dekhar jonno ----> df.shape
+
+
+column name set kora----->df = pd.DataFrame(uni, columns=['University_Name'])
+
+column er Row name set kora----->df = pd.DataFrame(uni, columns=['University_Name'])
+
+2ta list marge kora
+uni2 = ['DU', 'BUET', 'CUET','JU' ]
+df2 = pd.DataFrame(zip(uni, uni2), columns=['Private_University','Public_University'])
+
+---------------------------------------------------------------------------
+
+csv file read-----> df = pd.read_csv('data.csv')
+excel file read------> df = pd.read_excel('data.xlsx')
+
+file gulor title e jone (,/;/any symble) thake tahole tader separate korar jonno 
+
+csv file read-----> df = pd.read_csv('data.csv', sep=',/;/any symle')
+excel file read------> df = pd.read_excel('data.xlsx', sep=',/;/any symle')
+
+
+#import data set from different folder/file location
+data2 = pd.read_excel("C:\\Users\\Bijoy\\Desktop\\ML_Prc\\em.xlsx")
+df2 = pd.DataFrame(data2)
+df2
+
+
+#file read from github
+url = "https://github.com/rashakil-ds/5-Minutes-to-Pandas/raw/main/Datasets/bike.csv"
+data3= pd.read_csv(url)
+df = pd.DataFrame(data3)
+df3
+df3.head()
+
+kaggle theke onk data set pawa jay
+
+---------------------------------------------------------------------------
+
+data set er first 5 data dekhar jonno df.head()
+last 5 ta data dekhar jonno df.tail()
+
+spesific number of data dekhar jonno df.head(10)-->(number of N)--->1....n
+
+#range of entries
+df[1000:1005]
+
+data set er value dekhar jonno---->print(df.values)
+
+data set e columns er name dekhar jonno----> print(df.columns)
+
+data set e row er name dekhar jonno------->print(df.index)
+
+spacefic kono columns dekhte chaile------->print(df.Date)----->df.column er name dete hobe
+
+spacefic kono columns dekhte chaile-------df.Date----->df.column er name dete hobe
+
+jodi column name er moddhe space thake tahole-->df[['S1: Demographic Pressures']]-->'column er name'
+
+data ke sort korar jonno ---->df['Total'].sort_values()-->assending-->Shift+Tab chaple kon oder e data sort hoise segulo dekhabe
+
+ekti column er under e data set ke sort kora -->df.sort_values('Total', ascending=True)
+
+
+-----------------------------------------
+#Statical Analysis
+df.describe()
+
+
+#correlations
+df2.corr()
+
+
+#import seaborn
+import seaborn as sea
+sea.heatmap(df2.corr(), annot=True)
+
+#subseting roulse
+df[df['Total'] > 105]
+
+#Multiple condition use to subseting 
+df[(df['Country'] =='Yemen') | (df['Country'] =='Afghanistan')]
+
+anouther way---->df[df['Country'].isin(['New Zealand', 'Finland'])]
+
+#show the min value rows through the cnt num
+df3[df3['cnt'] == df3['cnt'].max()]
+-----------------------------------------
+
+dictionary to dataframe
+
+#Dictionary
+info = {
+    'name' : ['Bejoy', 'Rofique', 'Alam'],
+    'age' : ['23', '29', '35'],
+    'city' : ['USA', 'Bangladesh', 'India'],
+}
+
+new_df = pd.DataFrame(info)
+new_df
+----------------------------------------
+
+data type
+
+int8 => -2^8 to 2^8 range er modhhe data deya jabe
+int16 => -2^16 to 2^16 range er modhhe data deya jabe
+int32 => -2^32 to 2^16 range er modhhe data deya jabe
+int64 => -2^64 to 2^64 range er modhhe data deya jabe
+
+float16 => -2^16 to 2^16 range er modhhe data deya jabe
+float32 => -2^32 to 2^16 range er modhhe data deya jabe
+float64 => -2^64 to 2^64 range er modhhe data deya jabe
+
+datetime64[ns]
+df.dtypes #kontype er data type seta dekhabe
+--------------------------------------------------------------------
+
+Newmaric datatype
+
+#dictionary
+info = {
+    'age' : ['45','49','41','53','57'],
+    'salary' : ['40075','49000','43000','50000','57000']
+}
+
+df = pd.DataFrame(info)
+
+df['age'] = df['age'].astype('int32')
+df['salary'] = df['salary'].astype('int32')
+df.info()
+
+------------------------------------------------------------------
+
+#statical calculation
+df.data.max()
+df.data.min()
+df3.data.std()
+df3.data.mean()----->dataFrameName.columnsName.mean()
+
+kon value koy bar ache seta dekhar jonno---->df3.data.value_counts()
+
+#50% quantile dekhar jonno
+df3.cnt.quantile(0.50)
+------------------------------------------------------------------
+
+#max 10 column value print
+df3.nlargest(2, 'hr')
+
+#min 10 column value print
+df3.nsmallest(10, 'hr')
+
+--------------------------------------------------------------------
+loc & iloc
+
+loc-->kaj kore index value
+iloc-->kaj kore index position
+
+df3.loc[0:3] #index value neye kaj kore
+df3.iloc[0:3] #n-1 hishe kaj kore iloc
+-------------------------------------------------------------------

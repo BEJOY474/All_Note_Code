@@ -1,0 +1,436 @@
+collback function ------>> () =>{}
+devDependancy te library import korte hole ----> example npm i -D nodemon
+
+
+kono ekta project e npm ekbar initialization korle oi project e r init. korte hoy na
+
+---------------------------------------------------------------------------------
+
+Routing korar jonno age index.js file khulte hobe..tar por npm init -y lekhte hobe
+
+---------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+
+server jate bar bar restart kora na lage tai npm install nodemon lekhte hobe
+
+er jode nodemon install korar por o server restart na hoy tahile environment setup korte hobe...
+
+environment setup------> 
+1)localdisk(c:)
+2)Windows
+3)System32
+4)System32 te enter korar por oi link gula copy korte hobe
+5)environment --> path -->new --> past that copied link-->ok
+6) done 
+
+------------------------------------------------------------------------------------
+
+for hosting server------>heroku
+
+-----------------------------------------------------------------------------------
+
+Body-parser
+
+json neye kaj koror jonno body-parser use korte hobe & form theke data req
+ korar jonno age install korte hobe --------npm i body-parser
+
+
+// body-parser add kora hoise start
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+// body-parser add kora hoise end
+
+------------------------------------------------------------------------------------
+
+.env setup
+npm i dotenv lekhte hobe...
+
+code--->>require('dotenv').config(); const port = process.env.port || 3002
+-----------------------------------------------------------------------------------
+
+.gitignore er modhe .env r node_modules/ file gular name thakbe..privet file onno kew jate accesss korte na pare
+
+------------------------------------------------------------------------------------------
+
+CORS-> Cross Origin Resource Sharing
+cors er maddhome user jode differen port theke access korte chay tahole parbe
+npm i cors
+
+cont cors = require('cors')
+app.use(cors())
+
+-------------------------------------------------------------------------
+Unique id genarate --> npm i uuid
+const { uuid } = require('uuidv4');
+-----------------------------------------------------------------------
+
+update or delete korar jonno user er id params er maddhome nete hobe
+route.put("/:id", updateUser);--->route part
+const id = req.params.id; controller part
+---------------------------------------------------------------------
+
+controller part
+
+//get user
+exports.getUsers = (req, res)=>{
+    res.status(200).json({
+        users
+    })
+}
+
+//create user
+exports.createUser = (req, res)=>{
+   const userAdd ={
+     id : uuid(),
+     name : req.body.name,
+     dept : req.body.dept
+   } ;
+
+   users.push(userAdd);
+   res.status(201).json({
+        users
+   })
+}
+
+//Update user
+exports.updateUser = (req, res)=>{
+    const userId = req.params.id;
+    const {name , dept} = req.body;
+
+    users.filter((user)=>user.id === userId)
+    .map((selectedUser)=> {
+        selectedUser.name = name,
+        selectedUser.dept = dept
+    } );
+    res.status(202).json({
+        users
+    })
+ }
+
+ //Delete user
+exports.deleteUser = (req, res)=>{
+    const userId = req.params.id;
+    users = users.filter((user)=> user.id !== userId);
+    res.status(202).json({
+        users
+    })
+ }
+
+------------------------------------------------------------------------------
+image uploader er jonno multer use krte hobe
+
+----------------------------------------------------------------------------
+consol er output color korar jonno chalk use korte hobe
+npm i chalk@^4.1.2
+ console.log(chlak.bgBlue.bold(`Server is running http://localhost:${port}`))
+------------------------------------------------------------------------------
+
+express validation
+npm install --save express-validator
+
+------------------------------------------------------------------------------
+
+morgan er maddhome kon request kora hoise seta dekha jay
+npm i --save-dev morgan
+middleware hesebe app.use(morgan('dev')) use kora o hoy
+--------------------------------------------------------------------------
+
+test to voice
+
+npm i @react-native-community/voice 
+
+------------------------------------------------------------------------------
+data base er shathe easily connect korar jonno mongoose use kora hoy
+npm i mongoose
+
+-----------------------------------------------------------------------------------------------------------
+
+mongoDB quary gulo "project1" project er moddhe kora hoyeche --product prize er moddhe implement kora hoise
+-------
+**find() array return kore and findOne() object object return kore 
+
+   //comparesion quary implements
+
+        //{price : {$lt : 600}}// less then quary
+        //{price : {$gt : 500}}// gretter then quary
+        //{price : {$ne : 345}}// not equal quary
+        //{price : {$gte : 500}}// gretter then equal quary
+        //{price : {$lte : 500}}// less then equal quary
+        //{price : {$in : [500, 200, 900]}}// array er moddhe price bole dete hobe..database e price thakle shei price onujai
+        //{price : {$nin : [500, 200, 900]}}// in quary er ulta hobe
+
+logical oparetor 
+----------------
+  var products = await Product.find({
+           // price : {$gte : priceGet}
+           $and:[{price : {$gte : 200}},{rating : {$gte : 4.5}} ] //and oaretor
+ })
+
+
+  var products = await Product.find({
+           // price : {$gte : priceGet}
+           $or:[{price : {$gte : 200}},{rating : {$gte : 4.5}} ] //or oaretor
+ })
+
+  var products = await Product.find({
+           // price : {$gte : priceGet}
+           $nor:[{price : {$gte : 200}},{rating : {$gte : 4.5}} ] //nor oaretor
+ }).countDocuments()//count korbe data koyta search kora value pawa gelo
+--------x----------------------x----------------x-------------x---------------------x----------------------x---
+
+const v var --->anisul islam js tutorial 64
+
+const : kono ekta block/ if else/ loop e const deye variable declear korle shei variable ke oi block/condition er baire use kora jay na..const er value change kora jay na
+var :  kono ekta block/ if else/ loop e var deye variable declear korle shei variable ke oi block/condition er baire use kora jay..
+
+ES6--> let, const, async, await, arrow function
+ES5--> ver, normal function, etc
+
+
+Delete korar jonno
+------------------
+ const products =await Product.findByIdAndDelete({_id : id})//.deleteOne()
+--------------------------------------------------------------------------------
+
+data encription korar jonno --> mongoose-encryption use korte hobe
+
+npm i mongoose-encryption
+
+.evn file elcryption ke banate hobe
+for example:
+
+ENC_KEY=hiThisIsBijoyEncryptionky
+
+tar por ENC_KEY ke require kore nete hobe model.js file e
+
+const config = require('../config/config')// jode .env file e key save kore tahole config theke require kore ante hobe
+
+const encrypt = require('mongoose-encryption');
+const userRegScheema = new mongoose.Schema({}) //new key word must use korte hobe
+
+const Key = config.enc.key
+userRegScheema.plugin(encrypt, { secret : Key,  encryptedFields: ['password', 'name'] });//encryptedFields er moddhe kon kon fild ke encrtpt korte hobe seta bole dete hobe
+
+exports.userRegister = mongoose.model('userRegister', userRegScheema)
+
+------------------------------------------------------------------------------------
+
+
+Hashing Function
+
+NPM MD5
+npm i md5
+
+const md5 = require('md5')
+
+password = md5(req.body.password)
+
+hashing er plm holo jode same password mullipale jayga te use kore tahole shob password er jonno same hashing funtion debe
+jeta hacker hash table use kore solve korte parbe
+---------------------------------------------------------------------------------------
+
+Hashing + solting
+npm bcrypt
+
+npm i bcrypt
+
+
+
+//data encrypted korar jonno hashing + salting start
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+//data encrypted korar jonno hashing + salting end
+
+
+exports.userRegistration = async (req, res)=>{
+   
+    //hashing + salting
+    bcrypt.hash(req.body.password, saltRounds, async function(err, hash) {
+        const users = new userRegister({
+            name : req.body.name,
+            email : req.body.email,
+            password : hash,
+            phone : req.body.phone,
+       })
+       const userData = await users.save()
+       res.status(200).send({
+        success : true,
+        data : userData
+       })
+    });
+    
+    } catch (error) {
+        res.status(500).send({
+            success : false,
+            massage : error
+        })
+    }
+}
+
+
+exports.userLogin = async (req, res)=>{
+    try {
+       const email = req.body.email
+       const password = req.body.password
+
+       const user = await userRegister.findOne({email : email})
+
+       if (user) {
+        bcrypt.compare(password, user.password, function(err, result) {
+            if(result==true){
+                res.status(200).sendFile(path.join(__dirname + "/../View/dashboard.html"))
+            }else{
+                res.status(200).send({
+                    success : false,
+                    massage : "invalid Usar!. Please try again"
+                })
+            }
+        });
+         
+       } else {
+            res.status(200).send({
+            success : false,
+            massage : "invalid Usar!. Please try again"
+           })
+       }
+    
+
+    } catch (error) {
+        res.status(500).send({
+            success : false,
+            massage : error
+        })
+    }
+}
+
+----------------------------------------------------------------------------------
+
+ejs tutorial
+npm i ejs
+
+app.set("view engine", "ejs" )
+
+ejs e jode koto data er value dekhte chai tahole <%= %> dete hobe 
+norlam if/else/loop er jonno <% %>
+
+<%- include('layout/header') %> //include korar jonno
+<%- include("layout/footer") %>
+
+----------------------------------------------------------------------------------
+passport framework has 2 types work
+
+	1)passport.js library. Er kaj holo ---> session manage kore thake
+		a)passport
+		b)express-session
+	2)authntication strategies er kaj holo ---> user ke authntic kora
+		a)local strategy - passport-local
+		b)passport-google
+
+
+
+
+npm i passport express-session connect-mongo passport-local
+
+
+//espress-session e jawar por connect-mongo A MongoDB-based session store e jaite hobe
+
+const passport = require('passport')
+const session = require('express-session')
+
+session gulo ke ekta diffrent database e store korar jonno connect -mongo use kora lagbe
+
+ 
+
+passport.js er nicher code lekhte hobe
+
+const passport = require('passport');
+const { User } = require('../models/user.model');
+const bcrypt = require('bcrypt')
+const LocalStrategy = require('passport-local').Strategy
+//console.log("login calliioo")
+
+passport.use(new LocalStrategy(
+   async (username, password, done) => {
+
+    try {
+        const user = await  User.findOne({ username : username })
+        // if (!user) {
+        //     return done(null, false, {massage : "Incorrect email"}); 
+
+        // }
+        // if (!bcrypt.compare(password, user.password)) {
+        //     return done(null, false, {massage : "Incorrect password"}); 
+        // }
+        // return done(null, user);
+
+        bcrypt.compare(password, user.password, (err, result)=> {
+            if(result==true){
+                return done(null, user);
+            }else{
+                return done(null, false, {massage : "Invalid user"}); 
+            }
+        });
+       
+    } catch (error) {
+        return done(error);
+    }
+
+    }
+  ));
+
+
+
+  //create session id
+  //whenever we login it create user id inside session
+
+  passport.serializeUser((user , done) =>{
+    done(null , user.id)
+  });
+
+  passport.deserializeUser(async (id, done)=>{
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch (error) {
+        done(error, false)
+    }
+  })
+ 
+
+
+
+app.js/route.js e necher code gulo lekhte hobe
+
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo');
+const config = require('../config/config')
+
+//session create and store start
+
+
+URL_DB = config.db.url
+
+app.set('trust proxy', 1) 
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl : URL_DB,
+        collectionName : "sessions"
+    })
+   // cookie: { secure: true }
+  }))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+//session create and store end
+-------------------------------------------------------------------------------------------------
+google authntication
+
+npm install passport-google-oauth20
+----------------------------------------------------------------------------------
